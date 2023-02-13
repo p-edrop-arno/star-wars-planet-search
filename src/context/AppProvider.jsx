@@ -4,6 +4,7 @@ import AppContext from './AppContext';
 
 function AppProvider({ children }) {
   const [planetsInfo, setplanetsInfo] = useState([]);
+  const [nameFilter, setNameFilter] = useState([]);
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -17,13 +18,15 @@ function AppProvider({ children }) {
     fetchApi();
   }, []);
 
-  const infos = {
+  const states = {
     planetsInfo,
     setplanetsInfo,
+    nameFilter,
+    setNameFilter,
   };
 
   return (
-    <AppContext.Provider value={ infos }>
+    <AppContext.Provider value={ states }>
       { children }
     </AppContext.Provider>
   );
