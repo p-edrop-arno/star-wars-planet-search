@@ -4,11 +4,20 @@ import AppContext from '../context/AppContext';
 function Table() {
   const { planets, fetched } = useContext(AppContext);
   const [planetsSelected, setPlanetsSelected] = useState([]);
+
   const [searchEntry, setSearchEntry] = useState('');
   const [columnFilter, setColumnFilter] = useState('population');
   const [compariosonFilter, setCompariosonFilter] = useState('maior que');
   const [valueFilter, setValueFilter] = useState(0);
+
   const [inputs, setInputs] = useState([]);
+  const [everyColumn] = useState([
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ]);
 
   useEffect(() => {
     fetched('https://swapi.dev/api/planets');
@@ -20,7 +29,11 @@ function Table() {
       comparison: compariosonFilter,
       value: valueFilter,
     };
-    setInputs([...inputs, filteredNumberObject]);
+    const currentFilter = [...inputs, filteredNumberObject];
+    const freeColumn = everyColumn
+      .filter((col) => !currentFilter.some((fil) => fil.column === col));
+    setInputs(currentFilter);
+    setColumnFilter(freeColumn[0]);
   };
 
   const selectedFilters = (
@@ -64,6 +77,11 @@ function Table() {
     }
   }, [searchEntry, planets]);
 
+  const removeFilter = (column) => {
+    const deletedFilter = inputs.filter((filter) => filter.column !== column);
+    setInputs(deletedFilter);
+  };
+
   return (
     <>
       <input
@@ -81,11 +99,8 @@ function Table() {
         value={ columnFilter }
         id="column-filter"
       >
-        <option value="population">population</option>
-        <option value="orbital_period">orbital_period</option>
-        <option value="diameter">diameter</option>
-        <option value="rotation_period">rotation_period</option>
-        <option value="surface_water">surface_water</option>
+        {everyColumn.filter((col) => !inputs.some((fil) => fil.column === col))
+          .map((col) => <option key={ col } value={ col }>{col}</option>)}
       </select>
 
       <select
@@ -115,6 +130,30 @@ function Table() {
       >
         Filtrar
       </button>
+
+      <div>
+        {inputs.length > 0 && inputs.map((filters, index) => (
+          <div key={ index } data-testid="filter">
+            <p key={ filters }>
+              {`${filters.column}
+          ${filters.comparison} ${filters.value}`}
+            </p>
+            <button
+              type="button"
+              onClick={ () => removeFilter(filters.column) }
+            >
+              deletar
+            </button>
+          </div>
+        ))}
+        <button
+          type="button"
+          onClick={ () => setInputs([]) }
+          data-testid="button-remove-filters"
+        >
+          Remover todas filtragens
+        </button>
+      </div>
 
       <table>
         <thead>
