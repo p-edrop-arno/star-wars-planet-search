@@ -155,7 +155,7 @@ function Table() {
         </button>
       </div>
 
-      <table>
+      <table style={ { border: '1px solid gold' } }>
         <thead>
           <tr>
             <th>Name</th>
