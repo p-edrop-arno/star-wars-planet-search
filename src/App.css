@@ -1,3 +1,52 @@
 * {
   margin: 0.1%;
 }
+
+body {
+  font-family: 'Geostar Fill', cursive;
+  color: greenyellow;
+  background-color: black;
+}
+
+h1 {
+  font-family: 'Geostar Fill', cursive;
+  font-size: 350%;
+  color: goldenrod;
+  margin: 1%;
+}
+
+nav {
+ background-color: rgba(128, 128, 128, 0.26);
+ border-style: solid;
+ border-radius: 10px;
+ border-color: gray;
+ border-width: thin;
+ margin: 1%;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 15px 15px;
+  margin: 1%;
+}
+
+td {
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+}
+
+.filtersSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.apliedFilters{
+  display: flex;
+  justify-content: space-around;
+}
+
+.removeFilters {
+  display: flex;
+  align-content: stretch;
+}

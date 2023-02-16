@@ -84,78 +84,94 @@ function Table() {
 
   return (
     <>
-      <input
-        type="text"
-        data-testid="name-filter"
-        placeholder="Filtrar por nome..."
-        value={ searchEntry }
-        onChange={ (event) => setSearchEntry(event.target.value) }
-        id="name-filter"
-      />
+      <h1>
+        Star Wars - Planet Search
+      </h1>
 
-      <select
-        data-testid="column-filter"
-        onChange={ (event) => setColumnFilter(event.target.value) }
-        value={ columnFilter }
-        id="column-filter"
-      >
-        {everyColumn.filter((col) => !inputs.some((fil) => fil.column === col))
-          .map((col) => <option key={ col } value={ col }>{col}</option>)}
-      </select>
-
-      <select
-        data-testid="comparison-filter"
-        onChange={ (event) => setCompariosonFilter(event.target.value) }
-        value={ compariosonFilter }
-        id="comparison-filter"
-      >
-        <option value="maior que">maior que</option>
-        <option value="menor que">menor que</option>
-        <option value="igual a">igual a</option>
-      </select>
-
-      <input
-        data-testid="value-filter"
-        type="number"
-        value={ valueFilter }
-        onChange={ (event) => setValueFilter(event.target.value) }
-        id="value-filter"
-      />
-
-      <button
-        data-testid="button-filter"
-        type="button"
-        onClick={ handleClick }
-        id="button-filter"
-      >
-        Filtrar
-      </button>
-
-      <div>
-        {inputs.length > 0 && inputs.map((filters, index) => (
-          <div key={ index } data-testid="filter">
-            <p key={ filters }>
-              {`${filters.column}
-          ${filters.comparison} ${filters.value}`}
-            </p>
-            <button
-              type="button"
-              onClick={ () => removeFilter(filters.column) }
-            >
-              deletar
-            </button>
-          </div>
-        ))}
-        <button
-          type="button"
-          onClick={ () => setInputs([]) }
-          data-testid="button-remove-filters"
+      <nav>
+        <section
+          className="filtersSection"
         >
-          Remover todas filtragens
-        </button>
-      </div>
+          <input
+            type="text"
+            data-testid="name-filter"
+            placeholder="Filtrar por nome..."
+            value={ searchEntry }
+            onChange={ (event) => setSearchEntry(event.target.value) }
+            id="name-filter"
+          />
 
-      <table style={ { border: '1px solid gold' } }>
+          <select
+            data-testid="column-filter"
+            onChange={ (event) => setColumnFilter(event.target.value) }
+            value={ columnFilter }
+            id="column-filter"
+          >
+            {everyColumn.filter((col) => !inputs.some((fil) => fil.column === col))
+              .map((col) => <option key={ col } value={ col }>{col}</option>)}
+          </select>
+
+          <select
+            data-testid="comparison-filter"
+            onChange={ (event) => setCompariosonFilter(event.target.value) }
+            value={ compariosonFilter }
+            id="comparison-filter"
+          >
+            <option value="maior que">maior que</option>
+            <option value="menor que">menor que</option>
+            <option value="igual a">igual a</option>
+          </select>
+
+          <input
+            data-testid="value-filter"
+            type="number"
+            value={ valueFilter }
+            onChange={ (event) => setValueFilter(event.target.value) }
+            id="value-filter"
+          />
+
+          <button
+            data-testid="button-filter"
+            type="button"
+            onClick={ handleClick }
+            id="button-filter"
+          >
+            Filtrar
+          </button>
+        </section>
+
+        <section>
+          <div
+            className="apliedFilters"
+          >
+            {inputs.length > 0 && inputs.map((filters, index) => (
+              <div key={ index } data-testid="filter">
+                <p key={ filters }>
+                  {`${filters.column}
+          ${filters.comparison} ${filters.value}`}
+                </p>
+                <button
+                  type="button"
+                  onClick={ () => removeFilter(filters.column) }
+                >
+                  deletar
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <button
+            className="removeFilters"
+            type="button"
+            onClick={ () => setInputs([]) }
+            data-testid="button-remove-filters"
+          >
+            Remover todas filtragens
+          </button>
+        </section>
+      </nav>
+
+      <table>
         <thead>
           <tr>
             <th>Name</th>
