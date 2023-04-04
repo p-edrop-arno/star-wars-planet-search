@@ -7,17 +7,17 @@
 ## **Índice**
 
 
-- <a href = "contexto-do-projeto">Contexto do projeto</a>
+- <a href = "#contexto-do-projeto">Contexto do projeto</a>
 
-- <a href = "desenvolvimento">Desenvolvimento</a>
+- <a href = "#desenvolvimento">Desenvolvimento</a>
 
-- <a href = "tecnologias-utilizadas">Tecnologias utilizadas</a>
+- <a href = "#tecnologias-utilizadas">Tecnologias utilizadas</a>
 
-- <a href = "proximos-passo">Próximos passos</a>
+- <a href = "#proximos-passo">Próximos passos</a>
 
-- <a href = "como-rodar-este-projeto">Como rodar este projeto</a>
+- <a href = "#como-rodar-este-projeto">Como rodar este projeto</a>
 
-- <a href = "pessoas-autoras">Pessoas autoras</a>
+- <a href = "#pessoas-autoras">Pessoas autoras</a>
 
 
 ## **Contexto do projeto:**
