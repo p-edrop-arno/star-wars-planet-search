@@ -92,4 +92,4 @@ preview da aplicação final
 
 - <a href = "https://www.linkedin.com/in/pedro-parno-figueiredo/">**Pedro Parno**</a>
 
-<img style="width: 200px" src="https://www.fifthsun.com/star-wars-boys-t-shirt-may-the-force-opening-crawl-charcoal-heather" alt="imagem texto may the force be with you">
+![may the force be with you](end-image.jpeg)
