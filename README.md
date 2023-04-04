@@ -1,4 +1,7 @@
-# 🪐 *Star Wars Planet Search* 🔭
+# 🔭 *Star Wars Planet Search* 🪐
+
+
+![intro gif](./projectIntro.gif)
 
 
 ## **Índice**
