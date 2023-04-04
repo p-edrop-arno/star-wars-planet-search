@@ -35,7 +35,7 @@
 
 - App Provider - responsável por fornecer o contexto para aplicação.
 
-- Table - enderiza a tabela de planetas e os componentes usados para aplicar os diferentes filtros.
+- Table - renderiza a tabela de planetas e os componentes usados para aplicar os diferentes filtros.
 
 
 ## **Tecnologias utilizadas:**
