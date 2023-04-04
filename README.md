@@ -53,11 +53,11 @@
 ## **Próximos passos:**
 
 
-- [] Estilização completa conforme o modelo
+- [ ] Estilização completa conforme o modelo
 
-- [] Ordenação das colunas de forma ascendente ou descedente
+- [ ] Ordenação das colunas de forma ascendente ou descedente
 
-- [] testes de 100% de cobertura total da aplicação
+- [ ] testes de 100% de cobertura total da aplicação
 
 ![Star Wars Planet Search](./req-9.gif)
 preview da aplicação final
