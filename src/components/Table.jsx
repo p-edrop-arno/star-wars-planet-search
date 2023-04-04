@@ -2,14 +2,24 @@ import React, { useContext, useEffect, useState } from 'react';
 import AppContext from '../context/AppContext';
 
 function Table() {
+  // estado obtido pelo hook, através do useContext.
   const { planets, fetched } = useContext(AppContext);
-  const [planetsSelected, setPlanetsSelected] = useState([]);
 
+  /*
+  estados para gerenciar mudanças na tabela:
+   planetas selecionados,
+   campo para busca,
+   filtro da coluna,
+   filtro para comparação,
+   valor da comparação,
+   estados dos filtros,
+   e opções de filtragem.
+  */
+  const [planetsSelected, setPlanetsSelected] = useState([]);
   const [searchEntry, setSearchEntry] = useState('');
   const [columnFilter, setColumnFilter] = useState('population');
   const [compariosonFilter, setCompariosonFilter] = useState('maior que');
   const [valueFilter, setValueFilter] = useState(0);
-
   const [inputs, setInputs] = useState([]);
   const [everyColumn] = useState([
     'population',
@@ -19,10 +29,12 @@ function Table() {
     'surface_water',
   ]);
 
+  // função para consultar de dados da api.
   useEffect(() => {
     fetched('https://swapi.dev/api/planets');
   }, []);
 
+  // função para aplicar novo filtro, além de adcionar o novo filtro juntamente com filtros já aplicados, analisar colunas livres para filtragem, e mudar a coluna filtrada como a primeira.
   const filteredNumber = () => {
     const filteredNumberObject = {
       column: columnFilter,
@@ -36,6 +48,7 @@ function Table() {
     setColumnFilter(freeColumn[0]);
   };
 
+  // função para fazer a filtragem com base nos filtros usados.
   const selectedFilters = (
     everyPlanets,
     filterComparison,
@@ -54,6 +67,7 @@ function Table() {
     return planet;
   });
 
+  // filtragem dos planetas.
   useEffect(() => {
     const everyPlanets = inputs.reduce((acc, curr) => selectedFilters(
       acc,
@@ -68,6 +82,7 @@ function Table() {
     filteredNumber();
   };
 
+  // caso não tenha uma busca específica todos os planetas serão mostrados, caso contrário, filtra pelo nome.
   useEffect(() => {
     if (searchEntry === '') {
       setPlanetsSelected(planets);
@@ -77,12 +92,19 @@ function Table() {
     }
   }, [searchEntry, planets]);
 
+  //Remove um filtro
   const removeFilter = (column) => {
     const deletedFilter = inputs.filter((filter) => filter.column !== column);
     setInputs(deletedFilter);
   };
 
   return (
+    
+    /*
+    componente renderiza:
+     seção que inclui o campo de busca e os filtros,
+     tabela para renderização dos planetas.
+    */
     <>
       <h1>
         Star Wars - Planet Search
