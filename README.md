@@ -92,4 +92,4 @@ preview da aplicação final
 
 - <a href = "https://www.linkedin.com/in/pedro-parno-figueiredo/">**Pedro Parno**</a>
 
-![may the force be with you](end-image.jpeg)
+![may the force be with you](end.png)
